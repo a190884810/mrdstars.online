@@ -8,8 +8,13 @@ const items = [
   { id: 4, name: 'Item 4' },
 ];
 
-const ItemGrid = ({ selectedItems, setSelectedItems }: { selectedItems: any[], setSelectedItems: (items: any[]) => void }) => {
-  const handleItemClick = (item: any) => {
+interface Item {
+  id: number;
+  name: string;
+}
+
+const ItemGrid = ({ selectedItems, setSelectedItems }: { selectedItems: Item[], setSelectedItems: (items: Item[]) => void }) => {
+  const handleItemClick = (item: Item) => {
     if (selectedItems.includes(item)) {
       setSelectedItems(selectedItems.filter((i) => i !== item));
     } else if (selectedItems.length < 2) {

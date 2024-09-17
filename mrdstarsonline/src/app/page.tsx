@@ -7,9 +7,14 @@ import NicknameInput from './components/NicknameInput';
 import ItemGrid from './components/ItemGrid';
 import SubmitButton from './components/SubmitButton';
 
+interface Item {
+  id: number;
+  name: string;
+}
+
 export default function Home() {
   const [nickname, setNickname] = useState('');
-  const [selectedItems, setSelectedItems] = useState<any[]>([]);
+  const [selectedItems, setSelectedItems] = useState<Item[]>([]);
   const router = useRouter(); // Hook to programmatically navigate
 
   const handleSubmit = () => {

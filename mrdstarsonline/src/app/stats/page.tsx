@@ -2,6 +2,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation'; // Hook to access query params from the URL
+import { Suspense } from 'react';
 
 const StatsPage = () => {
   const searchParams = useSearchParams(); // Hook to get URL query parameters
@@ -38,4 +39,11 @@ const StatsPage = () => {
   );
 };
 
-export default StatsPage;
+// Export wrapped with Suspense to handle client-side fetching
+export default function StatsPageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading stats...</div>}>
+      <StatsPage />
+    </Suspense>
+  );
+}
